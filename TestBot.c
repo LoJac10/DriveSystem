@@ -20,7 +20,7 @@ All 3 LCD Buttons                      Back to LCD Main Menu
 *//////////////////// ++ Notes ++ /////////////////////
  
 /* Includes */
-#include "LCD.h";a
+#include "LCD.h";
 #include "userControl.h";
 #include "Auton.h";
  
