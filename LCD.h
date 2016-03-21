@@ -28,7 +28,7 @@ void LCD()
 
 		if (nLCDButtons == left)
 		{
-			page = 3;
+			page = 2;
 		}
 		else if (nLCDButtons == right)
 		{
