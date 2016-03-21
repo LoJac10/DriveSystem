@@ -58,6 +58,7 @@ void Auton()
 	   so we start the auton */
 	while (place == 1)
 	{
+		/* Start calculating the current position on a loop */
 		currentX = SensorValue(xAccel) - xBias;
 		currentY = SensorValue(yAccel) - yBias;
 		wait1Msec(25);
@@ -88,8 +89,9 @@ void Auton()
 			//Turn to fix error
 		}
 		
-		/* Y Destination */
-		if (currentY <= yDes + noise || currentY >= yDes - noise) //If destination is reached
+		/* Destination */
+		if (currentY <= yDes + noise && currentY >= yDes - noise && 
+			  currentX <= xDes + noise && currentX >= xDes - noise) //If destination is reached
 		{
 			//Break fast to avoid drift
 			place = 2;
