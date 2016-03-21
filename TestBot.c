@@ -1,3 +1,5 @@
+#pragma config(Sensor, in1,    xAccel,         sensorAccelerometer)
+#pragma config(Sensor, in2,    yAccel,         sensorAccelerometer)
 #pragma config(Motor,  port2,           frontRight,    tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           backRight,     tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port4,           frontLeft,     tmotorVex393_MC29, openLoop)
