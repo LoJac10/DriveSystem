@@ -89,7 +89,7 @@ void Auton()
 		}
 		
 		/* Y Destination */
-		if (currentY >= yDes + noise || currentY >= yDes - noise) //If destination is reached
+		if (currentY <= yDes + noise || currentY >= yDes - noise) //If destination is reached
 		{
 			//Break fast to avoid drift
 			place = 2;
