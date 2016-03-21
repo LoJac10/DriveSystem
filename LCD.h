@@ -63,33 +63,8 @@ void LCD()
 		}
 	}
 	
-	/* RoboDash Menu */
-	while (page == 2)
-	{
-		clearLCDLine(0);
-		clearLCDLine(1);
-
-		displayLCDCenteredString(0, "RoboDash");
-		displayLCDCenteredString(1, "<   Select   >");
-		
-		if (nLCDButtons == left)
-		{
-			page = 1;
-		}
-		
-		else if (nLCDButtons == right)
-		{
-			page = 3;
-		}
-		
-		else if (nLCDButtons == center)
-		{
-			Program = 3;
-		}
-	}
-	
 	/* Testing Menu */
-	while (page == 3)
+	while (page == 2)
 	{
 		clearLCDLine(0);
 		clearLCDLine(1);
@@ -99,7 +74,7 @@ void LCD()
 		
 		if (nLCDButtons == left)
 		{
-			page = 2;
+			page = 1;
 		}
 		
 		else if (nLCDButtons == right)
@@ -109,7 +84,7 @@ void LCD()
 		
 		else if (nLCDButtons == center)
 		{
-			Program = 4;
+			Program = 3;
 		}
 	}
 }
