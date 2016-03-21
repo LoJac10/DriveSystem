@@ -12,12 +12,13 @@ int xBias;
 int yBias;
 int threshold = 3;
 int place = 0;
+int noise = 3;
 
 //Assuming the robot is facing the target destination
 //Therefore, the xDes will be 0, because it calibrated
 //with the value equaling 0.
 int xDes = 0; 
-int yDes = 800; //Haven't tested for correct values
+int yDes = 800; //Haven't tested for correct value
 
 /////
 // Auton Void
@@ -72,24 +73,23 @@ void Auton()
 		//
 		*//// - Notes - - - 
 		
-		/* X DESTINATION */
-		if (currentX > xDes + 5) //Help to cancel noise
+		//Start out going forward
+		
+		/* ERROR FIXING */
+		
+		/* X Destination */
+		if (currentX > xDes + noise) //If robot goes off corse... (X AXIS)
 		{
 			//Turn to fix error
 		}
 		
-		else if (currentX < xDes - 5) //Help to cancel noise
+		else if (currentX < xDes - noise) //If robot goes off corse... (X AXIS)
 		{
 			//Turn to fix error
 		}
 		
-		/* Y DESTINTION */
-		if (currentY < yDes)
-		{
-			//Go forward
-		}
-		
-		else if (currentY >= yDes)
+		/* Y Destination */
+		if (currentY >= yDes + noise || currentY >= yDes - noise) //If destination is reached
 		{
 			//Break fast to avoid drift
 			place = 2;
