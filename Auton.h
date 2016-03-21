@@ -16,8 +16,8 @@ int place = 0;
 //Assuming the robot is facing the target destination
 //Therefore, the xDes will be 0, because it calibrated
 //with the value equaling 0.
-int xDes = 0; //Haven't tested for correct values
-int yDes = 650; //Haven't tested for correct values
+int xDes = 0; 
+int yDes = 800; //Haven't tested for correct values
 
 /////
 // Auton Void
