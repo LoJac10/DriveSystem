@@ -18,6 +18,7 @@ All 3 LCD Buttons                      Back to LCD Main Menu
 - Program 0 - LCD Main Menu
 - Program 1 - User
 - Program 2 - Auton
+- Program 3 - Test
 
 *//////////////////// ++ Notes ++ /////////////////////
 
@@ -80,7 +81,7 @@ task main()
 		Auton();
 
 	}
-
+	
 	///////
 	// TEST CODE
 	///////
@@ -89,15 +90,11 @@ task main()
 		/* LCD Display */
 		clearLCDLine(0);
 		clearLCDLine(1);
-
 		displayLCDCenteredString(0, "- Running -");
 		displayLCDCenteredString(1, "Test");
 
 		/* Back to Main Menu */
-		if (nLCDButtons == 7)
-		{
-			Program = 0;
-		}
+		mainMenu();
 
 		/* Test Code Goes Here */
 		
