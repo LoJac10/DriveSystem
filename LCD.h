@@ -17,74 +17,99 @@ int right = 4;//LCD Right Button
 /////
 void LCD()
 {
-    /* User Control Menu */
-    while (page == 0)
-    {
-        clearLCDLine(0);
-        clearLCDLine(1);
-        
-        displayLCDCenteredString(0, "User Control");
-        displayLCDCenteredString(1, "<   Select   >");
-        
-        if (nLCDButtons == left)
-        {
-            page = 2;
-        }
-        else if (nLCDButtons == right)
-        {
-            page = 1;
-        }
-        else if (nLCDButtons == center)
-        {
-            Program = 1;
-        }
-    }
-    
-    /* Autonomous Menu */
-    while (page == 1)
-    {
-        clearLCDLine(0);
-        clearLCDLine(1);
-        
-        displayLCDCenteredString(0, "Autonomous");
-        displayLCDCenteredString(1, "<   Select   >");
-        
-        if (nLCDButtons == left)
-        {
-            page = 0;
-        }
-        else if (nLCDButtons == right)
-        {
-            page = 2;
-        }
-        else if (nLCDButtons == center)
-        {
-            Program = 2;
-        }
-    }
-    
-    /* Testing Menu */
-    while (page == 2)
-    {
-        clearLCDLine(0);
-        clearLCDLine(1);
-        
-        displayLCDCenteredString(0, "Test");
-        displayLCDCenteredString(1, "<   Select   >");
-        
-        if (nLCDButtons == left)
-        {
-            page = 1;
-        }
-        
-        else if (nLCDButtons == right)
-        {
-            page = 0;
-        }
-        
-        else if (nLCDButtons == center)
-        {
-            Program = 3;
-        }
-    }
+	/* User Control Menu */
+	while (page == 0) 
+	{
+		clearLCDLine(0);
+		clearLCDLine(1);
+
+		displayLCDCenteredString(0, "User Control");
+		displayLCDCenteredString(1, "<   Select   >");
+
+		if (nLCDButtons == left)
+		{
+			page = 3;
+		}
+		else if (nLCDButtons == right)
+		{
+			page = 1;
+		}
+		else if (nLCDButtons == center)
+		{
+			Program = 1;
+		}
+	}
+
+	/* Autonomous Menu */
+	while (page == 1)
+	{
+		clearLCDLine(0);
+		clearLCDLine(1);
+
+		displayLCDCenteredString(0, "Autonomous");
+		displayLCDCenteredString(1, "<   Select   >");
+
+		if (nLCDButtons == left)
+		{
+			page = 0;
+		}
+		else if (nLCDButtons == right)
+		{
+			page = 2;
+		}
+		else if (nLCDButtons == center)
+		{
+			Program = 2;
+		}
+	}
+	
+	/* RoboDash Menu */
+	while (page == 2)
+	{
+		clearLCDLine(0);
+		clearLCDLine(1);
+
+		displayLCDCenteredString(0, "RoboDash");
+		displayLCDCenteredString(1, "<   Select   >");
+		
+		if (nLCDButtons == left)
+		{
+			page = 1;
+		}
+		
+		else if (nLCDButtons == right)
+		{
+			page = 3;
+		}
+		
+		else if (nLCDButtons == center)
+		{
+			Program = 3;
+		}
+	}
+	
+	/* Testing Menu */
+	while (page == 3)
+	{
+		clearLCDLine(0);
+		clearLCDLine(1);
+
+		displayLCDCenteredString(0, "Test");
+		displayLCDCenteredString(1, "<   Select   >");
+		
+		if (nLCDButtons == left)
+		{
+			page = 2;
+		}
+		
+		else if (nLCDButtons == right)
+		{
+			page = 0;
+		}
+		
+		else if (nLCDButtons == center)
+		{
+			Program = 4;
+		}
+	}
 }
