@@ -22,6 +22,32 @@ All 3 LCD Buttons                      Back to LCD Main Menu
 
 *//////////////////// ++ Notes ++ /////////////////////
 
+/* LCD Integer Setup */
+int page = 0;//Different Pages for the LCD
+int Program = 0;//Runs the Main Code
+int left = 1;//LCD Left Button
+int center = 2;//LCD Center Button
+int right = 4;//LCD Right Button
+int xDisplay;
+int yDisplay;
+
+
+/* Autonomous Integer Setup */
+int currentX;
+int currentY;
+int xBias;
+int yBias;
+int threshold = 3;
+int place = 0;
+int noise = 3;
+
+/* UserControl Integer Setup */
+int Cha1 = 0;//Joystick Channel l Value
+int Cha2 = 0;//Joystick Channel 2 Value
+int Cha3 = 0;//Joystick Channel 3 Value
+int Cha4 = 0;//Joystick Channel 4 Value
+int RTthresh = 15;//Threshold for Joystick
+
 /* Includes */
 #include "LCD.h";
 #include "userControl.h";
@@ -31,6 +57,9 @@ void mainMenu()
 {
 	if (nLCDButtons == 7)
 	{
+		clearLCDLine(0);
+		clearLCDLine(1);
+		
 		Program = 0;
 	}
 }
@@ -68,18 +97,21 @@ task main()
 	///////
 	while(Program == 2)
 	{
-		/* LCD Display */
-		clearLCDLine(0);
-		clearLCDLine(1);
-		displayLCDCenteredString(0, "- Running -");
-		displayLCDCenteredString(1, "Autonomous");
 
 		/* Back to Main Menu */
 		mainMenu();
 
 		/* Auton File */
-		Auton();
-
+		//Auton();
+		
+		xDisplay = SensorValue(xAccel);
+		yDisplay = SensorValue(yAccel);
+		
+		/* LCD Display */
+		clearLCDLine(0);
+		clearLCDLine(1);
+		displayLCDNumber(0, 1, xDisplay);
+		displayLCDNumber(1, 1, yDisplay);
 	}
 	
 	///////
