@@ -18,6 +18,7 @@ void Auton()
 	/* Set the bias values */
 	xBias = SensorValue(xAccel);
 	yBias = SensorValue(yAccel);
+	wait1Msec(25);
 	
 	/* Set current acceleration */
 	currentX = SensorValue(xAccel) - xBias;
