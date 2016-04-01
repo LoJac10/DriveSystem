@@ -16,51 +16,51 @@ void userControl()
 
 	/* Joystick Channel 1 */
 	/* Right Y Axis */
-	if (vexRT[Ch1] > RTthresh)
+	if (vexRT[Ch1] > RTthresh || vexRT[Ch1] < RTthresh - nRTthresh)
 	{
 		Cha1 = vexRT[Ch1];
 	}
-	else if (vexRT[Ch1] < RTthresh)
+	else if (vexRT[Ch1] < RTthresh || vexRT[Ch1] > RTthresh - nRTthresh)
 	{
 		Cha1 = 0;
 	}
 
 	/* Joystick Channel 2 */
 	/* Right X Axis */
-	if (vexRT[Ch2] > RTthresh)
+	if (vexRT[Ch2] > RTthresh || vexRT[Ch2] < RTthresh - nRTthresh)
 	{
 		Cha2 = vexRT[Ch2];
 	}
-	else if (vexRT[Ch2] < RTthresh)
+	else if (vexRT[Ch2] < RTthresh || vexRT[Ch2] > RTthresh - nRTthresh)
 	{
 		Cha2 = 0;
 	}
 
 	/* Joystick Channel 3 */
 	/* Left X Axis */
-	if (vexRT[Ch3] > RTthresh)
+	if (vexRT[Ch3] > RTthresh || vexRT[Ch3] < RTthresh - nRTthresh)
 	{
 		Cha3 = vexRT[Ch3];
 	}
-	else if (vexRT[Ch3] < RTthresh)
+	else if (vexRT[Ch3] < RTthresh || vexRT[Ch3] > RTthresh - nRTthresh)
 	{
 		Cha3 = 0;
 	}
 
 	/* Joystick Channel 4 */
 	/* Left Y Axis */
-	if (vexRT[Ch4] > RTthresh)
+	if (vexRT[Ch4] > RTthresh || vexRT[Ch4] < RTthresh - nRTthresh)
 	{
 		Cha4 = vexRT[Ch4];
 	}
-	else if (vexRT[Ch4] < RTthresh)
+	else if (vexRT[Ch4] < RTthresh || vexRT[Ch4] > RTthresh - nRTthresh)
 	{ 
 		Cha4 = 0;
 	}
 
 	/* Setting Motor Values */
-	motor[frontRight] = Cha1 - Cha4 - Cha2;
-	motor[backRight] = Cha1 - Cha4 + Cha2;
-	motor[frontLeft] = Cha1 + Cha4 + Cha2;
-	motor[backLeft] = Cha1 + Cha4 - Cha2;
+	motor[frontRight] = Cha2 - Cha3 - Cha1;
+	motor[backRight] = Cha2 - Cha3 + Cha1;
+	motor[frontLeft] = Cha2 + Cha3 + Cha1;
+	motor[backLeft] = Cha2 + Cha3 - Cha1;
 }
