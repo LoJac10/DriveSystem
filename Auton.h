@@ -11,57 +11,73 @@
 /////
 void Auton()
 {
-	wait1Msec(2000); 
+	//Universal Integers
+	float Kp = 3;
+	float Ki = 0.01;
+	float Kd = 0.01;
+	float powerBackRight;
+	float powerFrontRight;
+	float powerBackLeft;
+	float powerFrontLeft;
+	
+	//X Integers
+	float xBias;
+	float xError;
+	float xIntegral;
+	float yIntegral;
+	float xDerivative;
+	float xLastError;
+	float xMove;
+	
+	//Y Integer
+	float yBias;
+	float yError;
+	float yDerivative;
+	float yLastError;
+	float yMove;
+	
+	wait1Msec(2000);
 
 	/* CALIBRATION START */
-	
+
 	/* Set the bias values */
 	xBias = SensorValue(xAccel);
 	yBias = SensorValue(yAccel);
 	wait1Msec(25);
-	
-	/* Set current acceleration */
-	currentX = SensorValue(xAccel) - xBias;
-	currentY = SensorValue(yAccel) - yBias;
-	wait1Msec(25);
-	
+
 	/* CALIBRATION  OVER */
 
-	while (place == 0)
+	while(true)
 	{
-		/* Making sure the robot starts without moving */
-		if (currentX < threshold && currentY <  threshold)
+		//While robot is accelerating in the X axis, loop this code
+		while(currentX > threshold || currentX < threshold - 6)
 		{
-			place = 1;
+			xError = SensorValue(xAccel) - xBias;
+			xIntegral = xIntegral + xError;
+			xDerivative = xError - xLastError;
+			xMove = (Kp * xError) + (Ki * xIntegral) + (Kd * xDerivative);
+			xLastError = xError;
 		}
 		
-		else if (currentX > threshold || currentY > threshold)
+		//If robot is accelerating in the Y axis,loop this code
+		while(currentY > threshold || currentY < threshold - 6)
 		{
-			Program = 0;
-		}
-	}
-	
-	/* We know the robot isn't moving, 
-	   so we start the auton */
-	while (place == 1)
-	{
-		/* Start calculating the current position on a loop */
-		currentX = SensorValue(xAccel) - xBias;
-		currentY = SensorValue(yAccel) - yBias;
-		wait1Msec(25);
+			yError = SensorValue(xAccel) - xBias;
+			yIntegral = yIntegral + yError;
+			yDerivative = yError - yLastError;
+			yMove = (Kp * yError) + (Ki * yIntegral) + (Kd * yDerivative);
+			yLastError = yError;
+		}	
 		
-
-		xPos = currentX * 2;
-		xNeg = currentX * 4;
+		powerFrontRight = xError - yError;
+		powerBackRight = xError + yError;
+		powerFrontLeft = xError + yError;
+		powerBackRight = xError - yError;
 		
-		yPos = currentY * 2;
-		yNeg = currentY * 4;
+		motor[frontRight] = powerFrontRight;
+		motor[backRight] = powerBackRight;
+		motor[frontLeft] = powerFrontLeft;
+		motor[backLeft] = powerBackLeft;
 		
-		//127 is a test value, haven't
-		//tested for correct values
-		motor[frontRight] = 127;
-		motor[backRight] = 127;
-		motor[frontLeft] = 127;
-		motor[backLeft] = 127;
 	}
 }
