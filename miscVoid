@@ -18,7 +18,7 @@ void math()
 void forward()
 {
 	math();
-	
+
 	motor[frontRight] = fMotorSpeed;
 	motor[backRight] = fMotorSpeed;
 	motor[frontLeft] = fMotorSpeed;
@@ -28,7 +28,7 @@ void forward()
 void backward()
 {
 	math();
-	
+
 	motor[frontRight] = bMotorSpeed;
 	motor[backRight] = bMotorSpeed;
 	motor[frontLeft] = bMotorSpeed;
@@ -38,7 +38,7 @@ void backward()
 void pLeft()
 {
 	math();
-	
+
 	motor[frontRight] = bMotorSpeed;
 	motor[backRight] = bMotorSpeed;
 	motor[frontLeft] = fMotorSpeed;
@@ -48,7 +48,7 @@ void pLeft()
 void pRight()
 {
 	math();
-	
+
 	motor[frontRight] = fMotorSpeed;
 	motor[backRight] = fMotorSpeed;
 	motor[frontLeft] = bMotorSpeed;
@@ -57,14 +57,20 @@ void pRight()
 
 void sLeft()
 {
-	
-	//Test with robot
-	
+	math();
+
+	motor[frontRight] = fMotorSpeed;
+	motor[backRight] = bMotorSpeed;
+	motor[frontLeft] = fMotorSpeed;
+	motor[backLeft] = bMotorSpeed;
 }
 
 void sRight()
 {
-	
-	//Test with robot
-	
+	math();
+
+	motor[frontRight] = bMotorSpeed;
+	motor[backRight] = fMotorSpeed;
+	motor[frontLeft] = bMotorSpeed;
+	motor[backLeft] = fMotorSpeed;
 }
