@@ -46,14 +46,14 @@ int nRTthresh = RTthresh * 2; //Negative threshold for joystick
 /* Autonomous Integer Setup */
 int currentX;
 int currentY;
-int xBias;
-int yBias;
 int threshold = 3;
-int place = 0;
+/*
+int place;
 int xPos;
 int xNeg;
 int yPos;
 int yNeg;
+*/
 
 /* Includes */
 #include "miscVoid.h";
@@ -61,14 +61,6 @@ int yNeg;
 #include "userControl.h";
 #include "Auton.h";
 #include "sillyAuton.h";
-
-void mainMenu()
-{
-	if (nLCDButtons == left + right + center)
-	{		
-		Program = 0;
-	}
-}
 
 task main()
 {
@@ -91,9 +83,6 @@ task main()
 		displayLCDCenteredString(0, "- Running -");
 		displayLCDCenteredString(1, "User Control");
 
-		/* Back to Main Menu */
-		mainMenu();
-
 		/* User Control File */
 		userControl();
 	}
@@ -105,20 +94,17 @@ task main()
 	{
 		xDisplay = SensorValue(xAccel);
 		yDisplay = SensorValue(yAccel);
-		
+
 		/* LCD Display */
 		clearLCDLine(0);
 		clearLCDLine(1);
 		displayLCDNumber(0, 1, xDisplay);
 		displayLCDNumber(1, 1, yDisplay);
 
-		/* Back to Main Menu */
-		mainMenu();
-
 		/* Auton  */
 		Auton();
 	}
-	
+
 	///////
 	// SILLY AUTON CODE
 	///////
@@ -130,12 +116,10 @@ task main()
 		displayLCDCenteredString(0, "- Running -");
 		displayLCDCenteredString(1, "Silly Auton");
 
-		/* Back to Main Menu */
-		mainMenu();
-		
+		fMotorSpeed = 127;
 		sillyAuton();
 	}
-	
+
 	///////
 	// TEST CODE
 	///////
@@ -147,11 +131,8 @@ task main()
 		displayLCDCenteredString(0, "- Running -");
 		displayLCDCenteredString(1, "Test");
 
-		/* Back to Main Menu */
-		mainMenu();
-
 		/* Test Code Goes Here */
-		
+
 		// Instead of making a new program to test
 		// (eg. variables) for the robot, that code
 		// would go here
