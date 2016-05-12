@@ -41,6 +41,7 @@ void LCD()
 			waitForRelease();
 			Program = 1;
 		}
+		wait1Msec(50);
 	}
 
 	/* Autonomous Menu */
@@ -67,6 +68,7 @@ void LCD()
 			waitForRelease();
 			Program = 2;
 		}
+		wait1Msec(50);
 	}
 	
 	/* Silly Auton */
@@ -95,6 +97,7 @@ void LCD()
 			waitForRelease();
 			Program = 3;
 		}
+		wait1Msec(50);
 	}
 	
 	/* Testing Menu */
@@ -123,5 +126,6 @@ void LCD()
 			waitForRelease();
 			Program = 4;
 		}
+		wait1Msec(50);
 	}
 }
